@@ -1,0 +1,9 @@
+# General
+build
+
+# Packer
+packer_cache
+
+# Vagrant
+.vagrant
+*.box
