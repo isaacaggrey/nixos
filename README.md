@@ -19,29 +19,6 @@ mount /dev/disk/by-label/nixos /mnt
 mount /dev/sda1 /mnt/boot
 ```
 
-##
-# modify configuration.nix
-* set `boot.loader.systemd-boot.enable = true;`
-* comment out `boot.loader.grub` settings
-
-```nix
-{ config, pkgs, ... }:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
-  boot.loader.systemd-boot.enable = true;
-
-  # Enable the OpenSSH server.
-  services.sshd.enable = true;
-
-  system.stateVersion = "17.09";
-}
-```
-
 # TODOs
 * maybe use just: https://github.com/casey/just
 * use LVM

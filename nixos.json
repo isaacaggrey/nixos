@@ -17,11 +17,6 @@
             "inline": ["nixos-generate-config --root /mnt"]
         },
         {
-            "type": "file",
-            "source": "base.nix",
-            "destination": "/mnt/etc/nixos/configuration.nix"
-        },
-        {
             "type": "shell",
             "inline": ["nixos-install --no-root-passwd"]
         }
