@@ -45,3 +45,11 @@ mount /dev/sda1 /mnt/boot
 # TODOs
 * maybe use just: https://github.com/casey/just
 * use LVM
+
+lvmdiskscan
+
+pvcreate /dev/nvme01n1 /dev/nvme1n1
+pvdisplay
+
+vgcreate Data /dev/nvme0n1 /dev/nvme1n1
+vgdisplay

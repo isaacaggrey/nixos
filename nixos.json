@@ -1,40 +1,15 @@
 {
     "builders": [{
-        "type": "virtualbox-iso",
-        "guest_os_type": "Linux_64",
-        "vboxmanage": [
-            ["modifyvm", "{{.Name}}", "--memory",   "4096"],
-            ["modifyvm", "{{.Name}}", "--firmware", "efi" ],
-            ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "nixos-minimal-17.09.2961.3d985c45905-x86_64-linux.iso"]
-        ],
-        "vboxmanage_post": [
-            ["storageattach", "{{.Name}}", "--storagectl", "IDE Controller", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "none"]
-        ],
-        "guest_additions_mode": "disable",
-        "sata_port_count": 2,
-        "vm_name": "nixos-minimal-17.09.2961",
-        "output_directory": "build",
-        "iso_url": "nixos-minimal-17.09.2961.3d985c45905-x86_64-linux.iso",
-        "iso_checksum": "37027fabb4ca168a31dbbd21ea6def90488bfc5118da99d5f64aeac31cbd9e9b",
-        "iso_checksum_type": "sha256",
+        "type": "null",
+        "ssh_host": "10.84.29.13",
         "ssh_username": "root",
-        "ssh_password": "root",
-        "boot_wait": "45s",
-        "boot_command": [
-            "systemctl start sshd", "<enter>",
-            "<wait5>",
-            "passwd root", "<enter>",
-            "root", "<enter>",
-            "root", "<enter>"
-        ]
+        "ssh_password": "root"
     }],
     "provisioners": [
         {
             "type": "shell",
             "scripts": [
-                "scripts/create-partitions.sh",
-                "scripts/initialize-partitions.sh",
-                "scripts/mount-partitions.sh"
+                "scripts/setup.sh"
             ]
         },
         {
